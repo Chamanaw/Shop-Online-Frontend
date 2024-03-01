@@ -19,14 +19,11 @@ function ResultSearchPage() {
     const getProduct = async () => {
         try {
             await axios.get(`/search?${search}`)
-                .then((result) => {
-                    setProductLsit(result.data)
-                })
+                .then(result=> setProductLsit(result.data))
         }
         catch (error) {
             throw error
         }
-
     }
 
     useEffect(() => {

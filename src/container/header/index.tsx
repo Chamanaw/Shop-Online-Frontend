@@ -14,9 +14,12 @@ import PersonIcon from '@mui/icons-material/Person';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Link } from 'react-router-dom'
 import Search from '../search';
-
+import { useCartContext } from '../../context/cartContext';
 
 function Header() {
+
+    const {cartItems} = useCartContext()
+    
     return (
 
         <AppBar className='bg-zinc-800'>
@@ -27,7 +30,6 @@ function Header() {
                             size='large'
                             color='inherit'
                             edge='start'
-
                         >
                             <ShoppingBagIcon />
                         </IconButton>
@@ -48,7 +50,7 @@ function Header() {
                         </Button>
                         <Button variant='contained' className='bg-blue-600'>Sign up</Button>
                         <Link to='/cart'>
-                            <Badge badgeContent={5} color='primary'>
+                            <Badge badgeContent={cartItems.length} color='primary'>
                                 <IconButton>
                                     <ShoppingCartIcon sx={{ color: 'white' }} />
                                 </IconButton>

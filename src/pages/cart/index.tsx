@@ -1,15 +1,19 @@
 import { Box, Button, Stack, Typography } from '@mui/material'
-import { ProductType } from '../../data/product'
+//import { ProductType } from '../../data/product'
 import { v4 as uuidv4 } from 'uuid'
+import { useCartContext } from '../../context/cartContext'
 
-function CartPage({ products }: { products: ProductType[] }) {
+function CartPage() {
+
+    const {cartItems} = useCartContext()
+
     return (
         <Box component='div' className='mt-5'>
             <Typography variant='h5' gutterBottom >ตะกร้าสินค้า</Typography>
             <Stack direction='row' spacing={3}>
                 <Box component='div' sx={{ width: '100%' }}>
                     {
-                        products.map((element, index) => (
+                        cartItems.map((element, index) => (
                             <Stack direction='row'
                                 key={uuidv4()}
                                 alignItems='center'
