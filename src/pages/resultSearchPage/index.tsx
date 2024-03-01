@@ -9,17 +9,16 @@ import axios from '../../api'
 
 function ResultSearchPage() {
 
-    const {search} = useLocation()
-    const param =new URLSearchParams(search)
-    const query =  param.get('keyword')
+    const { search } = useLocation()
+    const param = new URLSearchParams(search)
+    const query = param.get('keyword')
 
     const [productList, setProductLsit] = useState<ProductType[] | null>()
-    
 
     const getProduct = async () => {
         try {
             await axios.get(`/search?${search}`)
-                .then(result=> setProductLsit(result.data))
+                .then(result => setProductLsit(result.data))
         }
         catch (error) {
             throw error
@@ -28,30 +27,34 @@ function ResultSearchPage() {
 
     useEffect(() => {
         getProduct()
-    },[query])
+    }, [query])
 
     return (
-        <Stack direction='row' spacing={2} className='mt-12'>
+        <Stack direction='row' spacing={2} className='mt-5'>
             <Box className='min-w-[230px] bg-zinc-100 h-[20rem] rounded pl-5'>
-                <Typography className='pt-7 font-semibold'>หมวดหมู่สินค้า</Typography>
+                <Typography className='pt-7 font-semibold'>CATEGORY</Typography>
                 <Box>
                     <List >
                         <ListItem className='textListItems'>
-                            <Typography variant='body2'>โทรศัพท์มือถือ</Typography>
+                            <Typography variant='body2'>Smartphone</Typography>
                         </ListItem>
                         <ListItem className='textListItems'>
-                            <Typography variant='body2' >เครื่องใช้ไฟฟ้า</Typography>
+                            <Typography variant='body2' >Electrical appliance</Typography>
                         </ListItem>
                         <ListItem className='textListItems'>
-                            <Typography variant='body2'>หูฟังและหูฟังเกมมิ่ง</Typography>
+                            <Typography variant='body2'>Earphones</Typography>
                         </ListItem>
                     </List>
                 </Box>
 
             </Box>
             <Box className='flex flex-col content-center '>
-                <Typography variant='h5' className='mb-3'>{(productList)?`ผลการค้นหา ${query}`:`ไม่พบข้อมูลของ ${query}`}</Typography>
-                <ProductList products={(productList)?productList:null} />
+                <Stack direction='row' spacing={1}>
+                    <Typography variant='h5' className='mb-3'>{(productList) ? 'Result for' : 'No information found for'}</Typography>
+                    <Typography variant='h5' className='font-medium'>{query}</Typography>
+                </Stack>
+
+                <ProductList products={(productList) ? productList : null} />
             </Box>
         </Stack>
     )

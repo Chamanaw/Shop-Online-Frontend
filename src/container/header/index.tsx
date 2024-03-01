@@ -18,24 +18,28 @@ import { useCartContext } from '../../context/cartContext';
 
 function Header() {
 
-    const {cartItems} = useCartContext()
-    
+    const { cartItems } = useCartContext()
+
     return (
 
         <AppBar className='bg-zinc-800'>
             <Container maxWidth='xl'>
                 <Toolbar sx={{ justifyContent: "space-between" }}>
                     <Stack direction='row' alignItems='center'>
-                        <IconButton
-                            size='large'
-                            color='inherit'
-                            edge='start'
-                        >
-                            <ShoppingBagIcon />
-                        </IconButton>
-                        <Typography variant='h6' component='div' >
-                            SHOPING STORE
-                        </Typography>
+                        <Link to='/'>
+                            <IconButton
+                                size='large'
+                                color='inherit'
+                                edge='start'
+                            >
+                                <ShoppingBagIcon />
+                            </IconButton>
+                        </Link>
+                        <Link to='/'>
+                            <Typography variant='h6' component='div' >
+                                SHOPING STORE
+                            </Typography>
+                        </Link>
                     </Stack>
                     <Search />
                     <Stack direction='row' spacing={2}>
