@@ -2,11 +2,10 @@ import {createBrowserRouter} from 'react-router-dom'
 import App from '../App'
 import HomePage from '../pages/homePage'
 import ProductPage from '../pages/productDetailsPage'
-//import { productOne} from '../data/product'
 import CartPage from '../pages/cart'
 import ResultSearchPage from '../pages/resultSearchPage'
 import axios from '../api'
-
+import Signin from '../pages/signinPage'
 
 export const routes = createBrowserRouter([
     {
@@ -39,6 +38,10 @@ export const routes = createBrowserRouter([
                 path:'/search',
                 element:<ResultSearchPage/>
 
+            },
+            {
+                path:'/login',
+                element:<Signin/>
             }
 
         ]
