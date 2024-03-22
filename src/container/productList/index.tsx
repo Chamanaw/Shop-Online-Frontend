@@ -2,7 +2,7 @@ import ProductCard from "../../components/productCard";
 import { Box } from '@mui/material'
 import { v4 as uuidv4 } from 'uuid';
 import { Link } from 'react-router-dom'
-import { ProductType } from "../../data/product";
+import { ProductType } from "../../interface";
 import Grid from '@mui/material/Unstable_Grid2';
 
 function ProductList({products}: { products: ProductType[] | null}) {

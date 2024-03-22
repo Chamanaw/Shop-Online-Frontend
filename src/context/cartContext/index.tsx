@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import axios from '../../api'
-import {ProductType} from '../../data/product'
+import {ProductType} from '../../interface'
 
 interface Cart {
     cartItems: ProductType[],

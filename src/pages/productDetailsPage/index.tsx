@@ -1,5 +1,5 @@
 import { Stack, Typography, Box, Button } from '@mui/material'
-import { ProductType } from '../../data/product'
+import { ProductType } from '../../interface'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useCartContext } from '../../context/cartContext';
 import { useLoaderData } from 'react-router-dom';

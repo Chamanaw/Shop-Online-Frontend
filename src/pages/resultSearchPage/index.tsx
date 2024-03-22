@@ -1,5 +1,5 @@
 import { Box, Stack, Typography, } from '@mui/material'
-import { ProductType } from '../../data/product'
+import { ProductType } from '../../interface'
 import ProductList from '../../container/productList'
 import { ListItem, List } from '@mui/material'
 import { useLocation } from 'react-router-dom'
@@ -17,7 +17,7 @@ function ResultSearchPage() {
 
     const getProduct = async () => {
         try {
-            await axios.get(`/search?${search}`)
+            await axios.get(`/${search}`)
                 .then(result => setProductLsit(result.data))
         }
         catch (error) {

@@ -5,7 +5,8 @@ import ProductPage from '../pages/productDetailsPage'
 import CartPage from '../pages/cart'
 import ResultSearchPage from '../pages/resultSearchPage'
 import axios from '../api'
-import Signin from '../pages/signinPage'
+import Signin from '../pages/loginPage'
+import Signup from '../pages/signupPage'
 
 export const routes = createBrowserRouter([
     {
@@ -41,7 +42,10 @@ export const routes = createBrowserRouter([
             },
             {
                 path:'/login',
-                element:<Signin/>
+                element:<Signin />
+            },{
+                path:'/signup',
+                element:<Signup/>
             }
 
         ]

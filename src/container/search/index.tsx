@@ -15,8 +15,6 @@ const Search = () => {
         }
     }
 
-
-
     return (
         <SearchBar
             setKeyword={setKeyword}

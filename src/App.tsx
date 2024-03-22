@@ -7,16 +7,21 @@ import { Container } from '@mui/material';
 import Layout from './components/layout';
 import { Outlet } from 'react-router-dom';
 import CartContextProvider from './context/cartContext';
+import UserContextProvider from './context/userContext';
+
+
 
 function App() {
 
   return (
     <Container maxWidth='xl'>
-      <CartContextProvider>
-        <Layout>
-          <Outlet />
-        </Layout>
-      </CartContextProvider>
+      <UserContextProvider>
+        <CartContextProvider>
+          <Layout >
+            <Outlet />
+          </Layout>
+        </CartContextProvider>
+      </UserContextProvider>
     </Container>
   )
 }
