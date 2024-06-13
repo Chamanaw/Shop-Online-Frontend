@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import axios from '../../api'
-import {ProductType} from '../../interface'
+import { ProductType } from '../../types'
+import { useNavigate } from 'react-router-dom'
 
 interface Cart {
     cartItems: ProductType[],
@@ -8,16 +9,7 @@ interface Cart {
 }
 
 const defaultCartContext: Cart = {
-    cartItems: [
-        {
-            id: 0,
-            image: '',
-            productName: '',
-            category: '',
-            price: 0,
-            scription: '',
-        }
-    ],
+    cartItems: [],
     setCartItems: (_data) => { }
 }
 
@@ -32,24 +24,18 @@ export function useCartContext() {
 }
 
 export default function CartConstexProvider({ children }: Props) {
-
     const [cartItems, setCartItems] = useState<ProductType[]>([])
-
+    const navigate = useNavigate()
     const getProductCart = async () => {
-        try {
-            await axios.get('/carts')
-            .then((result)=>{
-                setCartItems(result.data)
-            })
-        }
-        catch (error) {
-            throw error
-        }
+        const result = await axios.get('/api/cart')
+        setCartItems(result.data)
     }
     useEffect(() => {
-        getProductCart()
-    },[])
-    
+        const token = localStorage.getItem('accessToken')
+        if(token){getProductCart()}
+        else{navigate('/')}  
+    }, [])
+
     return (
         <CartConstex.Provider value={{ cartItems, setCartItems }}>
             {children}

@@ -4,9 +4,9 @@ import HomePage from '../pages/homePage'
 import ProductPage from '../pages/productDetailsPage'
 import CartPage from '../pages/cart'
 import ResultSearchPage from '../pages/resultSearchPage'
-import axios from '../api'
 import Signin from '../pages/loginPage'
 import Signup from '../pages/signupPage'
+import Setting from '../pages/setting'
 
 export const routes = createBrowserRouter([
     {
@@ -18,22 +18,12 @@ export const routes = createBrowserRouter([
                 element:<HomePage/>
             },
             {
-                path:'/iPhone15promax',
+                path:'/:nameProduct',
                 element:<ProductPage/>,
-                loader: async () =>{
-                    const productDetail = await axios.get('/productDetail')
-                    .then(result=>result.data)
-                    return productDetail
-                }
             },
             {
                 path:'/cart',
                 element:<CartPage/>,
-                loader: async () =>{
-                    const cartItems = await axios.get('/carts')
-                    .then(result=>result.data)
-                    return cartItems
-                }
             },
             {
                 path:'/search',
@@ -41,14 +31,20 @@ export const routes = createBrowserRouter([
 
             },
             {
-                path:'/login',
-                element:<Signin />
-            },{
-                path:'/signup',
-                element:<Signup/>
+                path:'/setting',
+                element:<Setting/>
             }
 
         ]
+          
     },
+    {
+        path:'/login',
+        element:<Signin />
+    },
+    {
+        path:'/signup',
+        element:<Signup/>
+    }
    
 ])

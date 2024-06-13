@@ -18,13 +18,17 @@ interface cardType{
 
 function ProductCard({image,category,productName,price}:cardType) {
     return (
-        <Stack direction='row' className='w-full'>
+        <Stack direction='row' className='w-full min-w-[12.5rem]'>
             <Box>
                 <Card>
                     <CardMedia
                         component='img'
                         image={image}
-                        className='w-42'
+                        sx={{
+                            width:"100%",
+                            height: '14rem',
+                            objectFit: 'contain',
+                        }}
                     />
                     <CardContent>
                         <Typography className='text-sm text-gray-600'>{category}</Typography>

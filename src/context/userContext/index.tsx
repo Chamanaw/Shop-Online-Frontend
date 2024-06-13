@@ -1,6 +1,7 @@
 import { createContext, useState, useContext, useEffect } from 'react'
-import { UserType } from '../../interface'
+import { UserType } from '../../types'
 import axios from '../../api'
+import { useNavigate } from 'react-router-dom'
 
 
 interface User {
@@ -10,9 +11,9 @@ interface User {
 
 const defaultUserContext = {
     user: {
-        id: 0,
         user_name: '',
-        email: ''
+        email: '',
+        image: ''
     },
     setUser: (_data: UserType) => { }
 }
@@ -29,31 +30,26 @@ interface Props {
 
 
 export default function UserContextProvider({ children }: Props) {
-
-    useEffect(()=> {
-        const token = localStorage.getItem('token')
+    const [user, setUser] = useState<UserType>({ user_name: '', email: '', image: '' })
+    const navigate = useNavigate()
+    const getUser = async () => {
         try {
-            axios.post('/api/user', {}, { headers: { "authorization": "Bearer " + token } })
-                .then((result) => {
-                    if (result.data.status === "success") {
-                        return setUser(result.data.user)
-                    }
-                    return alert("เข้าสู่ระบบใหม่")
-                    
-                })
-        }catch(err){
-            throw err
+            const result = await axios.get('/api/user')
+            setUser(result.data)
+        }
+        catch (err) {
+            console.log(err)
         }
 
-    }, [])
-
-    const [user, setUser] = useState<UserType>({ id: 0, user_name: '', email: '' })
-
-
+    }
+    useEffect(() => {
+        const token = localStorage.getItem('accessToken')
+        if(token){getUser()}
+        else{navigate('/')} 
+    },[])
     return (
         <UserContext.Provider value={{ user, setUser }}>
             {children}
         </UserContext.Provider>
     )
-
 }

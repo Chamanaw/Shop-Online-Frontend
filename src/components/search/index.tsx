@@ -4,8 +4,7 @@ import SearchIcon from '@mui/icons-material/Search';
 
 const SearchStyle = styled('div')(({ theme }) => (
     {
-        backgroundColor: 'white',
-        padding: '0 10px',
+        padding: '3px 10px',
         borderRadius: theme.shape.borderRadius,
         maxWidth: '660px'
     }
@@ -19,7 +18,7 @@ interface SearchProps {
 
 const SearchBar:React.FC<SearchProps> = ({setKeyword,searchValue,handleKeyDown}) => {
     return (
-        <SearchStyle sx={{ flexGrow: 1 }}>
+        <SearchStyle sx={{ flexGrow: 1 }} className="bg-gray-200">
             <InputBase placeholder='Search'
                 endAdornment={<InputAdornment position='end'><SearchIcon /></InputAdornment>}
                 fullWidth
