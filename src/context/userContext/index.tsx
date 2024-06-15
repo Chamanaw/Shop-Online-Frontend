@@ -33,14 +33,8 @@ export default function UserContextProvider({ children }: Props) {
     const [user, setUser] = useState<UserType>({ user_name: '', email: '', image: '' })
     const navigate = useNavigate()
     const getUser = async () => {
-        try {
-            const result = await axios.get('/api/user')
-            setUser(result.data)
-        }
-        catch (err) {
-            console.log(err)
-        }
-
+        const result = await axios.get('/api/user')
+        setUser(result.data)
     }
     useEffect(() => {
         const token = localStorage.getItem('accessToken')

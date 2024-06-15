@@ -13,6 +13,9 @@ const pathRequireToken = [
     "/api/cart",
     "/api/addproduct",
     "/api/deleteitem",
+    "/api/updateusername",
+    "/api/updatepassword",
+    "/api/updateEmail"
 ];
 
 instance.interceptors.request.use(
@@ -22,8 +25,7 @@ instance.interceptors.request.use(
         const refreshToken = localStorage.getItem("refreshToken");
         const expireAccessToken = accessToken ? token_expire(accessToken) : false;
         const expireRefreshToken = refreshToken ? token_expire(refreshToken): false;
-
-        if (expireAccessToken && requiresToken) {
+        if (requiresToken && expireAccessToken) {
             if (!expireRefreshToken) {
                 try {
                     const new_access_token = await refresh_Token(refreshToken as string);
@@ -36,7 +38,7 @@ instance.interceptors.request.use(
                 return Promise.reject("Token Expire");
             }
         } 
-        else {
+        else if(requiresToken) {
             config.headers.Authorization = "Bearer " + accessToken;
         }
         return config;
