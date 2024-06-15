@@ -32,7 +32,7 @@ function Setting() {
             return;
         }
         setErrorUsername(false);
-        const result = await axios.patch("/api/updateusername", {
+        const result = await axios.patch("/api/user/updateusername", {
             newUsername: newUsername,
         });
         if (result.status === 200) {
@@ -49,7 +49,7 @@ function Setting() {
         }
         if (newPassword === matchPass) {
             setErrorPassword(false);
-            const result = await axios.patch("/api/updatepassword", {
+            const result = await axios.patch("/api/user/updatepassword", {
                 newPassword: newPassword,
             });
             if (result.status === 200) {
@@ -60,17 +60,14 @@ function Setting() {
         else{
             setErrorPassword(true)
         }
-
-
     };
-
     const handelChangeEmail = async () => {
         if (!newEmail) {
             setErrorEmail(true);
             return;
         }
         setErrorEmail(false);
-        const result = await axios.patch("/api/updateEmail", {
+        const result = await axios.patch("/api/user/updateEmail", {
             newEmail: newEmail,
         });
         if (result.status === 200) {

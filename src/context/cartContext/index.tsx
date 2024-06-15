@@ -27,7 +27,7 @@ export default function CartConstexProvider({ children }: Props) {
     const [cartItems, setCartItems] = useState<ProductType[]>([])
     const navigate = useNavigate()
     const getProductCart = async () => {
-        const result = await axios.get('/api/cart')
+        const result = await axios.get('/api/cart/getcart')
         setCartItems(result.data)
     }
     useEffect(() => {

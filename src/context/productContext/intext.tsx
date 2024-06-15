@@ -27,7 +27,7 @@ export default function ProductContextProvider({children}:Props){
     const [products, setProducts] = useState<ProductType[]>([])
 
     const fetchProduct = async()=>{
-        const result = await axios.get('/api/allproduct')
+        const result = await axios.get('/api/products/allproduct')
         setProducts(result.data)
     }
 

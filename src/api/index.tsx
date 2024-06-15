@@ -9,13 +9,13 @@ const instance = axios.create({
 });
 
 const pathRequireToken = [
-    "/api/user",
-    "/api/cart",
-    "/api/addproduct",
-    "/api/deleteitem",
-    "/api/updateusername",
-    "/api/updatepassword",
-    "/api/updateEmail"
+    "/api/user/getuser",
+    "/api/cart/getcart",
+    "/api/cart/addproduct",
+    "/api/cart/deleteitem",
+    "/api/user/updateusername",
+    "/api/user/updatepassword",
+    "/api/user/updateEmail"
 ];
 
 instance.interceptors.request.use(

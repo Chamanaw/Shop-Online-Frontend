@@ -41,7 +41,7 @@ function ProductPage() {
     }
     const resultCheck = cartItems.find((ele) => ele.product_id === currentProduct.product_id);
     if (!resultCheck) {
-      const result = await axios.post("/api/addproduct", {product_id: currentProduct.product_id});
+      const result = await axios.post("/api/cart/addproduct", {product_id: currentProduct.product_id});
       if (result.status === 200) {
         setCartItems([...cartItems,currentProduct])
       }
@@ -52,7 +52,7 @@ function ProductPage() {
 
   const fetchProductData = async () => 
     {
-        const result = await axios.get(`/api/${param}`);
+        const result = await axios.get(`/api/products/${param}`);
         setCurrentProduct(result.data[0]);
     };
 

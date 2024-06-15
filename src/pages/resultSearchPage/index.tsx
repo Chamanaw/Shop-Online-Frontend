@@ -15,7 +15,7 @@ function ResultSearchPage() {
     const [productList, setProductLsit] = useState<ProductType[] | null>()
 
     const getProduct = async () => {
-        const result = await axios.get(`/api/search?keyword=${query}`)
+        const result = await axios.get(`/api/products/search?keyword=${query}`)
         setProductLsit(result.data)
     }
 

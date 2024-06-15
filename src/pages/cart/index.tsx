@@ -27,7 +27,7 @@ function CartPage() {
   };
 
   const handleClickDelete = async (product_id: number) => {
-    const result = await axios.delete("/api/deleteitem", {
+    const result = await axios.delete("/api/cart/deleteitem", {
       data: { product_id: product_id },
     });
     if (result.status === 200) {
