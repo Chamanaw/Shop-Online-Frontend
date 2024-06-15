@@ -24,7 +24,7 @@ function Signup() {
     const signup = async () => {
 
         const data = { username: username, password: password, email: email }
-        const result = await axios.post('/api/signup', data)
+        const result = await axios.post('/api/user/signup', data)
 
         if (result.status === 200) {
             return setOprnAlert(true)
@@ -39,7 +39,11 @@ function Signup() {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
         const empty = (username && password && email) ? true : false
-        if (!matchPassword && empty) {
+        if(!empty){
+            setError(true)
+            return
+        }
+        if (!matchPassword) {
             signup()
             setError(false)
         }
@@ -76,11 +80,7 @@ function Signup() {
                                 placeholder='Username'
                                 InputProps={{ startAdornment: <InputAdornment position='start'><PersonIcon /></InputAdornment> }}
                                 helperText='Can only be used a-z A-Z 0-9'
-                                onChange={e => {
-                                    if (e.target.value.match(/\w/)) {
-                                        setUsername(e.target.value)
-                                    }
-                                }}
+                                onChange={e => (e.target.value.match(/\w{5,}/))?setUsername(e.target.value):setUsername('')}
                                 error={error}
                                 required
                             />
@@ -90,11 +90,7 @@ function Signup() {
                                 InputProps={{ startAdornment: <InputAdornment position='start'><LockOpenIcon /></InputAdornment> }}
                                 type='password'
                                 helperText='Can only be used a-z A-Z 0-9'
-                                onChange={e => {
-                                    if (e.target.value.match(/\w/)) {
-                                        setPassword(e.target.value)
-                                    }
-                                }}
+                                onChange={e => (e.target.value.match(/\w{5,}/))? setPassword(e.target.value):setPassword('')}
                                 error={error}
                                 required
                             />
@@ -104,14 +100,7 @@ function Signup() {
                                 InputProps={{ startAdornment: <InputAdornment position='start'><LockOpenIcon /></InputAdornment> }}
                                 type='password'
                                 helperText={(!matchPassword) ? "Enter the passwords to match." : "passwords not match."}
-                                onBlur={e => {
-                                    if (e.target.value === password) {
-                                        setMatchPassword(false)
-                                    }
-                                    else {
-                                        setMatchPassword(true)
-                                    }
-                                }}
+                                onBlur={e => (e.target.value === password) ? setMatchPassword(false):setMatchPassword(true)}
                                 error={matchPassword || error}
                                 required
                             />
@@ -120,7 +109,7 @@ function Signup() {
                                 placeholder='Email'
                                 InputProps={{ startAdornment: <InputAdornment position='start'><EmailIcon /></InputAdornment> }}
                                 type='email'
-                                onChange={e => setEmail(e.target.value)}
+                                onChange={e =>(e.target.value.match(/\w{5,}@\w{5,}/))?setEmail(e.target.value):setEmail('')}
                                 error={error}
                                 required
                             />
