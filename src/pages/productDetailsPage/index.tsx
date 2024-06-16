@@ -151,7 +151,7 @@ function ProductPage() {
             </Stack>
           </Grid>
         </Grid>
-        <Typography variant="h6" gutterBottom className="text-2xl mt-10 mb-2">
+        <Typography variant="h6" gutterBottom className="text-xl md:text-2xl mt-10 mb-2">
           Products
         </Typography>
 

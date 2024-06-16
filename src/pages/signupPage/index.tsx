@@ -79,7 +79,7 @@ function Signup() {
                                 variant='outlined'
                                 placeholder='Username'
                                 InputProps={{ startAdornment: <InputAdornment position='start'><PersonIcon /></InputAdornment> }}
-                                helperText='Can only be used a-z A-Z 0-9'
+                                helperText='Can only be used a-z A-Z 0-9 more than 5 characters'
                                 onChange={e => (e.target.value.match(/\w{5,}/))?setUsername(e.target.value):setUsername('')}
                                 error={error}
                                 required
@@ -89,7 +89,7 @@ function Signup() {
                                 placeholder='Password'
                                 InputProps={{ startAdornment: <InputAdornment position='start'><LockOpenIcon /></InputAdornment> }}
                                 type='password'
-                                helperText='Can only be used a-z A-Z 0-9'
+                                helperText='Can only be used a-z A-Z 0-9 more than 5 characters'
                                 onChange={e => (e.target.value.match(/\w{5,}/))? setPassword(e.target.value):setPassword('')}
                                 error={error}
                                 required

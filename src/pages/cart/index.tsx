@@ -51,7 +51,7 @@ function CartPage() {
         <Typography variant="h5" className="font-bold" gutterBottom>
           Cart ({cartItems.length})
         </Typography>
-        <Stack spacing={3} className="flex flex-col w-full md:flex-row md:justify-between md:gap-x-4">
+        <Stack spacing={3} className="flex flex-col w-full lg:flex-row md:justify-between md:gap-x-4">
           <Box component="div" className="w-full" >
             {cartItems.map((element, index) => (
               <Stack
@@ -75,8 +75,8 @@ function CartPage() {
                   className="w-full"
                   alignItems="center"
                 >
-                  <Box>
-                    <Typography className="font-medium">
+                  <Box component={"div"} className="w-[10rem] md:w-[15rem]">
+                    <Typography className="font-bold text-sm md:text-base">
                       {element.name}
                     </Typography>
                     <Typography className="text-sm">
@@ -101,7 +101,7 @@ function CartPage() {
             ))}
           </Box>
           <Stack
-            className="w-full md:w-[750px] md:mt-0 p-6 bg-zinc-100 rounded h-52"
+            className="w-full lg:w-[750px] md:mt-0 p-6 bg-zinc-100 rounded h-52"
             direction="column"
             spacing={1}
           >

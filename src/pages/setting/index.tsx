@@ -124,7 +124,7 @@ function Setting() {
                             type="text"
                             placeholder="New username"
                             variant="outlined"
-                            helperText="Can only be used a-z A-Z 0-9"
+                            helperText="Can only be used a-z A-Z 0-9 more than 5 characters"
                             onChange={(e) =>
                                 e.target.value.match(/\w{5,}/)
                                     ? setNewUsername(e.target.value)
@@ -148,7 +148,7 @@ function Setting() {
                             type="Password"
                             placeholder="New password"
                             variant="outlined"
-                            helperText="Can only be used a-z A-Z 0-9"
+                            helperText="Can only be used a-z A-Z 0-9 more than 5 characters"
                             onChange={(e) =>
                                 e.target.value.match(/\w{5,}/)
                                     ? setNewPassword(e.target.value)
