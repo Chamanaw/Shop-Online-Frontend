@@ -109,7 +109,7 @@ function Signup() {
                                 placeholder='Email'
                                 InputProps={{ startAdornment: <InputAdornment position='start'><EmailIcon /></InputAdornment> }}
                                 type='email'
-                                onChange={e =>(e.target.value.match(/\w{5,}@\w{5,}/))?setEmail(e.target.value):setEmail('')}
+                                onChange={e =>(e.target.value.match(/\w{5,}\@\w{5,}/))?setEmail(e.target.value):setEmail('')}
                                 error={error}
                                 required
                             />
