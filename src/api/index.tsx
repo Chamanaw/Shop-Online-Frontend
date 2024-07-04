@@ -20,7 +20,7 @@ const pathRequireToken = [
 
 instance.interceptors.request.use(
     async (config) => {
-        const requiresToken = pathRequireToken.some((path) => config.url?.includes(path));
+        const requiresToken = pathRequireToken.some((path) => config.url === path);
         const accessToken = localStorage.getItem("accessToken");
         const refreshToken = localStorage.getItem("refreshToken");
         const expireAccessToken = accessToken ? token_expire(accessToken) : false;

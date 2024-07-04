@@ -48,7 +48,7 @@ function CartPage() {
   return (
     <Container maxWidth="xl" className="mt-24">
       <Box component="div" className="mt-5">
-        <Typography variant="h5" className="font-bold" gutterBottom>
+        <Typography variant="h5" className="font-bold text-xl md:text-2xl" gutterBottom>
           Cart ({cartItems.length})
         </Typography>
         <Stack spacing={3} className="flex flex-col w-full lg:flex-row md:justify-between md:gap-x-4">
@@ -68,6 +68,7 @@ function CartPage() {
                     objectFit: "cover",
                     padding: "8px",
                   }}
+                  className="md:w-[100px] w-[80px]"
                 />
                 <Stack
                   direction="row"
@@ -75,7 +76,7 @@ function CartPage() {
                   className="w-full"
                   alignItems="center"
                 >
-                  <Box component={"div"} className="w-[10rem] md:w-[15rem]">
+                  <Box component={"div"} className="w-[8rem] md:w-[15rem]">
                     <Typography className="font-bold text-sm md:text-base">
                       {element.name}
                     </Typography>
@@ -86,7 +87,7 @@ function CartPage() {
 
                   <Typography
                     variant="body1"
-                    className="text-red-500 font-bold"
+                    className="text-red-500 font-bold text-sm"
                   >
                     ฿{element.price}
                   </Typography>

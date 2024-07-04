@@ -112,7 +112,7 @@ function Setting() {
                         </Typography>
                     </Stack>
                 </Stack>
-                <Stack className="p-5 w-full pt-0 md:w-[45rem]" spacing={2}>
+                <Stack className="md:p-5 w-full pt-0 md:w-[45rem]" spacing={2}>
                     <Typography variant="h5" className="font-bold text-xl md:text-2xl">
                         Setting
                     </Typography>

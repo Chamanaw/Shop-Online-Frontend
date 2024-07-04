@@ -25,7 +25,7 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { useNavigate } from "react-router-dom";
 import axios from "../../api";
-import logo from "../../assets/images/logo/detailed-click-collect-sign_23-2148779338.jpg";
+import logo from "../../assets/images/logo/logo-App.png";
 import MenuIcon from "@mui/icons-material/Menu";
 import DrawerMenuBar from "./drawerMenuBar";
 
@@ -74,11 +74,10 @@ function Header() {
               <Link to="/">
                 <Box
                   component="img"
-                  className="mt-[-5px] h-[90px] md:h-[110px] md:mt-[-13px]"
+                  className="mt-[-5px] h-[90px] md:h-[110px] md:mt-[-13px] min-h-[50px]"
                   sx={{
                     objectFit: "contain",
                   }}
-                  alt="The house from the offer."
                   src={logo}
                 />
               </Link>
