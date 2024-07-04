@@ -13,7 +13,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import bgLogin from "../../assets/images/login/bg-login.jpg";
-import logo from "../../assets/images/logo/detailed-click-collect-sign_23-2148779338.jpg";
+import logo from "../../assets/images/logo/logo-App.png";
 import axios from "../../api";
 
 function Signin() {
